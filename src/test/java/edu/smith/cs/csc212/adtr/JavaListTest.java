@@ -87,9 +87,45 @@ public class JavaListTest {
 		Assert.assertEquals(false, data.isEmpty());
 	}
 	
-	// TODO: test list addToBack.
-	// TODO: test list remove
-	// TODO test addIndex methods.
+	@Test
+	public void testAddIndex() {
+		ListADT<String> data = makeFullList();
+		data.addIndex(2, "Chara");
+		assertEquals("Chara", data.getIndex(2));
+		assertEquals(5, data.size());
+	}
+	
+	@Test
+	public void testAddBack() {
+		ListADT<String> data = makeFullList();
+		data.addBack("Rask");
+		assertEquals("Rask", data.getBack());
+		assertEquals(5, data.size());
+	}
+	
+	@Test
+	public void testRemoveBack() {
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		assertEquals("c", data.getBack());
+		assertEquals(3, data.size());
+	}
+	
+	@Test
+	public void testRemoveIndex() {
+		ListADT<String> data = makeFullList();
+		data.removeIndex(2);
+		assertEquals("d",data.getIndex(2));
+		assertEquals(3, data.size());
+	}
+	
+	@Test
+	public void testRemoveFront() {
+		ListADT<String> data = makeFullList();
+		data.removeFront();
+		assertEquals("b",data.getFront());
+		assertEquals(3, data.size());
+	}
 	
 	@Test
 	public void testGetFront() {
@@ -151,7 +187,6 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
 	
 	@Test
 	public void testSetIndex() {
@@ -162,44 +197,21 @@ public class JavaListTest {
 	}
 	
 	@Test
-	public void testAddIndex() {
+	public void testSetIndexBeg() {
 		ListADT<String> data = makeFullList();
-		data.addIndex(2, "Chara");
-		assertEquals("Chara", data.getIndex(2));
-		assertEquals(5, data.size());
+		data.setIndex(0, "Bergeron");
+		assertEquals("Bergeron", data.getIndex(0));
+		assertEquals(4, data.size());
 	}
 	
 	@Test
-	public void testAddBack() {
+	public void testSetIndexEnd() {
 		ListADT<String> data = makeFullList();
-		data.addBack("Rask");
-		assertEquals("Rask", data.getBack());
-		assertEquals(5, data.size());
+		data.setIndex(3, "Krug");
+		assertEquals("Krug", data.getIndex(3));
+		assertEquals(4, data.size());
 	}
 	
-	@Test
-	public void testRemoveBack() {
-		ListADT<String> data = makeFullList();
-		data.removeBack();
-		assertEquals("c", data.getBack());
-		assertEquals(3, data.size());
-	}
-	
-	@Test
-	public void testRemoveIndex() {
-		ListADT<String> data = makeFullList();
-		data.removeIndex(2);
-		assertEquals("d",data.getIndex(2));
-		assertEquals(3, data.size());
-	}
-	
-	@Test
-	public void testRemoveFront() {
-		ListADT<String> data = makeFullList();
-		data.removeFront();
-		assertEquals("b",data.getFront());
-		assertEquals(3, data.size());
-	}
 	
 	@Test
 	public void testToJava() {
